@@ -7,9 +7,10 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "clean": "rm dist/bundle.js",
-    "dev": "node -r '@babel/register' -r '@babel/polyfill' devServer.js",
-    "build-prod": "parcel build src/index.html",
+    "clean": "rm -rf ./public/dist",
+    "dev": "NODE_ENV=development node -r '@babel/register' -r '@babel/polyfill' server.js",
+    "stage": "NODE_ENV=prod node -r '@babel/register' -r '@babel/polyfill' server.js",
+    "build": "parcel build ./src/index.html --public-url /dist --out-dir ./public/dist",
     "update-schema": "node ./scripts/updateSchema.js",
     "relay": "relay-compiler --src ./src/js --schema ./scripts/schema.json --watch"
   },
@@ -17,7 +18,7 @@
     "@babel/polyfill": "^7.7.0",
     "@babel/register": "^7.7.0",
     "antd": "^3.25.1",
-    "babel-polyfill": "^6.26.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
     "highlight.js": "^9.16.2",
