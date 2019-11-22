@@ -7,7 +7,7 @@ RUN npm config set registry 'https://registry.npm.taobao.org'
 RUN npm install
 
 COPY . .
-RUN npm build
+RUN npm run build
 CMD ["npm", "run", "stage"]
 
 
