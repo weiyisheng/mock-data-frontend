@@ -106,6 +106,10 @@ function ProjectDetail(props) {
         <Col span={6}>
           <p className="project-name">pathKey：{pathKey}</p>
         </Col>
+        <Col span={6}>
+          <p className="project-name">HOST：http://172.19.12.140:9412</p>
+        </Col>
+        
       </Row>
       <Row type="flex" align="bottom" style={{ marginBottom: 20 }}>
         <Button type="primary" onClick={() => setAddModalVisible(true)}>
@@ -117,7 +121,7 @@ function ProjectDetail(props) {
             fontSize: 12,
             color: "rgba(0, 0, 0, 0.4)"
           }}
-        >{`接口访问路径规则："/v1/${pathKey}/\${接口.pathKey}`}</p>
+        >{`接口访问路径规则："\${HOST}/\${访问路径}`}</p>
       </Row>
 
       <AddMockModal

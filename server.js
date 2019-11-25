@@ -33,6 +33,7 @@ app.use(
 // 打包
 const bundler = new Bundler("./views/index.html", bundleOptions);
 bundler.bundle();
+
 function respond(res) {
   function resolveRes() {
     res.render(path.join(__dirname, "public", "dist", "index.html"), {
