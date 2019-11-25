@@ -105,23 +105,19 @@ function ProjectDetail(props) {
         </Col>
         <Col span={6}>
           <p className="project-name">pathKey：{pathKey}</p>
-        </Col>
-        <Col span={6}>
-          <p className="project-name">HOST：http://172.19.12.140:9412</p>
-        </Col>
-        
+        </Col>        
       </Row>
       <Row type="flex" align="bottom" style={{ marginBottom: 20 }}>
         <Button type="primary" onClick={() => setAddModalVisible(true)}>
           添加接口
         </Button>
-        <p
+        {/* <p
           style={{
             margin: "0 0 0 16px",
             fontSize: 12,
             color: "rgba(0, 0, 0, 0.4)"
           }}
-        >{`接口访问路径规则："\${HOST}/\${访问路径}`}</p>
+        >{`接口访问路径规则："\${HOST}/\${访问路径}`}</p> */}
       </Row>
 
       <AddMockModal

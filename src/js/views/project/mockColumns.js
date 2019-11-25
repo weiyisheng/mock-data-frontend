@@ -18,11 +18,11 @@ export default deleteFunc => [
     key: "pathKey"
   },
   {
-    title: "访问路径",
+    title: "请求路径",
     dataIndex: "pathKey",
     key: "apiPath",
     render(text, record) {
-      return `/v1/${record.project.pathKey}/${record.pathKey}`;
+      return `http://172.19.12.140:9412/v1/${record.project.pathKey}/${record.pathKey}`;
     }
   },
   {
