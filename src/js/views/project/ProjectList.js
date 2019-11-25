@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 import { graphql, QueryRenderer } from "react-relay";
-import environment from "/js/environment";
+import environment from "src/js/environment";
 import { get } from "lodash";
 
 //components
 import { Card, Row, Col, Icon } from "antd";
 
-import AddProjectModal from "/js/views/project/components/AddProjectModal";
+import AddProjectModal from "src/js/views/project/components/AddProjectModal";
 
 function ProjectList(props) {
   //props

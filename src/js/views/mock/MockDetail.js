@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { graphql, QueryRenderer } from "react-relay";
 import { Link } from "react-router-dom";
 
-import environment from "/js/environment";
+import environment from "src/js/environment";
 
 import { get } from "lodash";
 import Mock from "mockjs";
@@ -25,7 +25,7 @@ import { arrayTemplate } from "./templates";
 
 const HIGHT = 400;
 
-import UpdateMockMutation from "/js/mutations/UpdateMockMutation";
+import UpdateMockMutation from "src/js/mutations/UpdateMockMutation";
 
 function saveMockTemplate(mock, template) {
   UpdateMockMutation.commit({

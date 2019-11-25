@@ -1,7 +1,7 @@
 import React from "react";
 // import { graphql, QueryRenderer } from "react-relay";
 
-// import environment from "/js/environment";
+// import environment from "src/js/environment";
 
 //components
 import { Layout, Menu } from "antd";
@@ -15,13 +15,13 @@ import {
 } from "react-router-dom";
 
 //components
-import AppBreadcrumb from "/js/components/AppBreadcrumb";
+import AppBreadcrumb from "src/js/components/AppBreadcrumb";
 
 // pages
-import ProjectList from "/js/views/project/ProjectList";
-import ProjectDetail from "/js/views/project/ProjectDetail";
+import ProjectList from "src/js/views/project/ProjectList";
+import ProjectDetail from "src/js/views/project/ProjectDetail";
 
-import MockDetail from "/js/views/mock/MockDetail";
+import MockDetail from "src/js/views/mock/MockDetail";
 
 function App() {
   //states

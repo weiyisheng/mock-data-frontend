@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
 
 //mutations
-import AddMockMutation from "/js/mutations/AddMockMutation";
+import AddMockMutation from "src/js/mutations/AddMockMutation";
 
 //default template
-import { arrayTemplate } from "/js/views/mock/templates";
+import { arrayTemplate } from "src/js/views/mock/templates";
 
 function AddMock(props) {
   //props

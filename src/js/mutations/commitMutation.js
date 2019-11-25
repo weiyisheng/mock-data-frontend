@@ -1,6 +1,6 @@
 import { commitMutation } from 'react-relay';
 
-import environment from '/js/environment';
+import environment from 'src/js/environment';
 
 function pickNetworkError(errors) {
   if(Array.isArray(errors) && errors[0] && errors[0].message) {

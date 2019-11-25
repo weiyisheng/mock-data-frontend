@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { graphql, QueryRenderer } from "react-relay";
 
-import environment from "/js/environment";
+import environment from "src/js/environment";
 
 import { get } from "lodash";
 
@@ -13,8 +13,8 @@ import mockColumns from "./mockColumns";
 import AddMockModal from "./components/AddMockModal";
 
 // mutations
-import DeleteProjectMutation from "/js/mutations/DeleteProjectMutation";
-import DeleteMockMutation from "/js/mutations/DeleteMockMutation";
+import DeleteProjectMutation from "src/js/mutations/DeleteProjectMutation";
+import DeleteMockMutation from "src/js/mutations/DeleteMockMutation";
 
 function deleteProject(project, viewerID, history) {
   confirm({

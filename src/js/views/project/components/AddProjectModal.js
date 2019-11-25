@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
 
 //mutations
-import AddProjectMutation from "/js/mutations/AddProjectMutation";
+import AddProjectMutation from "src/js/mutations/AddProjectMutation";
 
 function AddProject(props) {
   //props

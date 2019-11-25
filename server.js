@@ -5,15 +5,24 @@ import proxy from "express-http-proxy";
 
 import Bundler from "parcel-bundler";
 
-import path from 'path';
-import compression from 'compression';
+import path from "path";
+import compression from "compression";
+
+import config from "config";
+import bundleOptions from "./bundleOptions";
 
 const app = express();
+if (process.env.NODE_ENV === "production") {
+  app.use(compression());
+}
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
+app.use(express.static(path.resolve("public")));
 
 //graphql proxy
 app.use(
   "/graphql",
-  proxy(process.env.BACKEND_ENDPOINT, {
+  proxy(config.BACKEND_ENDPOINT, {
     limit: "10mb",
     proxyReqPathResolver: function(req, res) {
       return require("url").parse(req.originalUrl).path;
@@ -21,17 +30,27 @@ app.use(
   })
 );
 
-// 使用parcel bundler 调试
-if(process.env.NODE_ENV === 'development') {
-  app.use(new Bundler("./src/index.html").middleware());
-} else {
-  app.use(compression())
-  app.use(express.static(path.resolve('public')))
-  app.use('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, 'public', 'dist', 'index.html'));
-  });
+// 打包
+const bundler = new Bundler("./views/index.html", bundleOptions);
+bundler.bundle();
+function respond(res) {
+  function resolveRes() {
+    res.render(path.join(__dirname, "public", "dist", "index.html"), {
+      API_SERVER_HOST: config.API_SERVER_HOST
+    });
+  }
+  if (bundler.pending) {
+    bundler.once("bundled", resolveRes);
+    // res.send("正在构建...");
+  } else {
+    resolveRes();
+  }
 }
 
-app.listen(process.env.PORT, () => {
+app.use("*", (req, res) => {
+  respond(res);
+});
+
+app.listen(config.PORT, () => {
   //console.log("GraphQL Server is now running on http://localhost:4000");
 });

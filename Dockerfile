@@ -1,17 +1,23 @@
-FROM node:10-alpine
-WORKDIR /usr/src/app
-ENV VERSION=1
-COPY ./package*.json ./
+FROM node:10.16
 
-RUN echo "https://mirrors.aliyun.com/alpine/v3.9/main/" > /etc/apk/repositories && \
-    echo "https://mirrors.aliyun.com/alpine/v3.9/community/" >> /etc/apk/repositories && \
-    echo "https://mirrors.aliyun.com/alpine/edge/testing/" >> /etc/apk/repositories && \
-    npm config set registry 'https://registry.npm.taobao.org' 
-RUN apk add --no-cache bash
-RUN npm install
+WORKDIR /usr/src/app
+
+ENV VERSION=1
+
+RUN yarn config set registry 'https://registry.npm.taobao.org' 
+
+COPY ./package.json ./
+
+COPY ./yarn.lock ./
+
+RUN yarn install
 
 COPY . .
-RUN npm run build
-CMD ["npm", "run", "stage"]
+
+# RUN yarn run build
+
+EXPOSE 9413:3000
+
+CMD ["yarn", "run", "stage"]
 
 
